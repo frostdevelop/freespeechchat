@@ -72,7 +72,12 @@ function onload(){
     pfpElm.src = pfp;
     let messageText = document.createElement("div");
     messageText.className = "Body";
-    messageText.appendChild(document.createTextNode(message));
+    //messageText.appendChild(document.createTextNode(message));
+	const splitted = message.split("\n");
+	for(let i=0;i<splitted.length;i++){
+		messageText.appendChild(document.createTextNode(splitted[i]));
+		if(!(i===splitted.length-1)){messageText.appendChild(document.createElement("br"));};
+	}
     messageElm.appendChild(pfpElm);
     messageElm.appendChild(userElm);
     messageElm.appendChild(messageText);
@@ -144,8 +149,9 @@ function Connect(){
 function Send(){
   typing = false;
   if (delay && messageInput.value.replace(/\s/g, "") != ""){
-    let message = messageInput.value.replaceAll("\n", "<br/>");
-    delay = false;
+    //let message = messageInput.value.replaceAll("\n", "<br/>");
+    const message = messageInput.value;
+	delay = false;
     setTimeout(delayReset, 500);
     socket.emit("send", message);
     messageInput.rows = 1;
