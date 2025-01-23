@@ -303,6 +303,9 @@ h2 {
 }
 .Message .Body {
   margin-left: 35px;
+  word-break: break-all;
+  padding-right: 10px;
+  white-space: pre;
 }
 @media screen and (max-width: 900px) {
   .alertpopup {
