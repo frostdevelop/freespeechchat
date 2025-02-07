@@ -44,40 +44,33 @@ function onload(){
     else if(type === "s"){
       system.playId("S");
     }
-    /*
-    if (messages.length < 9){
-      messages.push(message);
-      dingSound.currentTime = 0;
-      dingSound.play();
-    }
-    else{
-      messages.shift();
-      messages.push(message);
-    }
-    for (i = 0; i < messages.length; i++){
-        document.getElementById("Message"+i).innerHTML = messages[i];
-        document.getElementById("Message"+i).style.color = "#ffffff";
-        document.getElementById("User"+i).innerHTML = user;
-        document.getElementById("User"+i).style.color = "#ffffff";
-    }
-    */
-    let messageElm = document.createElement("div");
+    const messageElm = document.createElement("div");
     messageElm.className = "Message";
-    let userElm = document.createElement("div");
+    const optionsElm = document.createElement("div");
+    optionsElm.className = "optionsbar";
+    const copyBtn = document.createElement("button");
+    copyBtn.className = 'Button optionbtn';
+    copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 36 36" fill="none"><use href="#svg-copy" /></svg>';
+    optionsElm.appendChild(copyBtn);
+    const userElm = document.createElement("div");
     userElm.className = "User";
     userElm.innerHTML = user;
-    let pfpElm = document.createElement("img");
+    const pfpElm = document.createElement("img");
     pfpElm.className = "pfp";
     pfpElm.setAttribute("alt", "Profile Picture of " + user);
     pfpElm.src = pfp;
-    let messageText = document.createElement("div");
+    const messageText = document.createElement("div");
     messageText.className = "Body";
     //messageText.appendChild(document.createTextNode(message));
-	const splitted = message.split("\n");
-	for(let i=0;i<splitted.length;i++){
-		messageText.appendChild(document.createTextNode(splitted[i]));
-		if(!(i===splitted.length-1)){messageText.appendChild(document.createElement("br"));};
-	}
+    const splitted = message.split("\n");
+    for(let i=0;i<splitted.length;i++){
+      messageText.appendChild(document.createTextNode(splitted[i]));
+      if(!(i===splitted.length-1)){messageText.appendChild(document.createElement("br"));};
+    }
+    copyBtn.addEventListener('click',()=>{
+      navigator.clipboard.writeText(message);
+    });
+    messageElm.appendChild(optionsElm);
     messageElm.appendChild(pfpElm);
     messageElm.appendChild(userElm);
     messageElm.appendChild(messageText);

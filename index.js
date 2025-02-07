@@ -11,7 +11,7 @@ const gamedirectory = path.join(__dirname, "html");
 
 app.use(express.static(gamedirectory));
 
-httpserver.listen(3000);
+httpserver.listen(3030);
 
 var rooms = [];
 var usernames = [];
