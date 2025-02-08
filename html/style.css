@@ -321,19 +321,11 @@ h2 {
 }
 
 .Message .Body {
-  display: inline;
-  margin-left: 35px;
-  overflow-wrap: break-word;
-  padding-right: 10px;
-  white-space: pre-line;
-}
-
-.Message .Body {
   display: block;
   margin-left: 35px;
   overflow-wrap: break-word;
   padding-right: 10px;
-  white-space: pre-line;
+  white-space: pre-wrap;
 }
 
 .Message:hover > .optionsbar {
