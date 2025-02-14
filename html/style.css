@@ -323,10 +323,18 @@ h2 {
 .Message .Body {
   display: block;
   margin-left: 35px;
-  overflow-wrap: break-word;
   padding-right: 10px;
-  white-space: pre-wrap;
 }
+
+.Message .Body blockquote,ul,ol {white-space:normal;}
+.Message .Body * {overflow-wrap: break-word;white-space: pre-wrap;}
+.Message .Body p {margin:0;}
+.Message .Body code {color:rgb(64, 255, 64);}
+.Message .Body h1 {margin: 10px 0;font-size:30px;}
+.Message .Body h2 {margin: 8px 0;font-size:25px;}
+.Message .Body h3 {margin: 5px 0;font-size:20px;}
+.Message .Body blockquote {margin:10px 20px;font-size: 15px;}
+.Message .Body ul,ol {margin: 10px 0;}
 
 .Message:hover > .optionsbar {
   opacity: 1;

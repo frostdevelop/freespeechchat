@@ -61,12 +61,7 @@ function onload(){
     pfpElm.src = pfp;
     const messageText = document.createElement("div");
     messageText.className = "Body";
-    //messageText.appendChild(document.createTextNode(message));
-    const splitted = message.split("\n");
-    for(let i=0;i<splitted.length;i++){
-      messageText.appendChild(document.createTextNode(splitted[i]));
-      if(!(i===splitted.length-1)){messageText.appendChild(document.createElement("br"));};
-    }
+    messageText.innerHTML = DOMPurify.sanitize(marked.parse(message),{FORBID_TAGS: ['button','input','form','svg','dialog','select']});
     copyBtn.addEventListener('click',()=>{
       navigator.clipboard.writeText(message);
     });
