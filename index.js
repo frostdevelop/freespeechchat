@@ -7,11 +7,20 @@ const app = express();
 const httpserver = http.Server(app);
 const io = socketio(httpserver);
 
-const gamedirectory = path.join(__dirname, "html");
+app.set('view engine','ejs');
+app.use(express.static(path.join(__dirname, "html")));
 
-app.use(express.static(gamedirectory));
+app.get('/',(req,res)=>{
+  if(req.headers['x-frost-mir'] == '1'){
+    res.render('index',{mir:'/freespeech'}); 
+  }else{
+    res.render('index',{mir:''});
+  }
+});
 
-httpserver.listen(3030);
+httpserver.listen(3030,()=>{
+  console.log("FREE ON 3030");
+});
 
 var rooms = [];
 var usernames = [];

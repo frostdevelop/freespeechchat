@@ -14,7 +14,9 @@ var typing = false;
 var typingtimeout;
 
 function onload(){
-  socket = io();
+  socket = io({
+    path: frostMir + '/socket.io/'
+  });
   usernameInput = document.getElementById("NameInput");
   chatIDInput = document.getElementById("IDInput");
   messageInput = document.getElementById("ComposedMessage");
@@ -62,6 +64,7 @@ function onload(){
     const messageText = document.createElement("div");
     messageText.className = "Body";
     messageText.innerHTML = DOMPurify.sanitize(marked.parse(message),{FORBID_TAGS: ['button','input','form','svg','dialog','select']});
+    //messageText.innerText = message;
     copyBtn.addEventListener('click',()=>{
       navigator.clipboard.writeText(message);
     });

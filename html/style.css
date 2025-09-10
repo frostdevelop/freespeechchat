@@ -324,10 +324,11 @@ h2 {
   display: block;
   margin-left: 35px;
   padding-right: 10px;
+  white-space: pre-wrap;
 }
 
 .Message .Body blockquote,ul,ol {white-space:normal;}
-.Message .Body * {overflow-wrap: break-word;white-space: pre-wrap;}
+.Message .Body * {overflow-wrap: break-word;}
 .Message .Body p {margin:0;}
 .Message .Body code {color:rgb(64, 255, 64);}
 .Message .Body h1 {margin: 10px 0;font-size:30px;}
